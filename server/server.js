@@ -16,15 +16,16 @@ MongoClient.connect(url, function (err, db) {
 app.get('/', (req, res) => res.send('hello!'));
 app.get('/historycomment', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    var msg = MongoClient.connect(url, function (err, client) {
+    let msg;
+    MongoClient.connect(url, function (err, client) {
         if (err) throw err;
         const db = client.db("msgData");
         const collection = db.collection('datas');
         collection.find({}).toArray(function (err, comments) {
             if (comments && comments.length > 0) {
-                return comments;
+                msg = comments;
             }
-            return Array();
+            msg = [];
         })
         client.close(); //關閉連線
     });
