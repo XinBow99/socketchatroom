@@ -28,6 +28,7 @@ app.get('/historycomment', (req, res) => {
         })
         client.close(); //關閉連線
     });
+    console.log(msg);
     res.end(JSON.stringify(msg));
 });
 
