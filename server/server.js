@@ -16,8 +16,8 @@ MongoClient.connect(url, function (err, db) {
 app.get('/', (req, res) => res.send('hello!'));
 app.get('/historycomment', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
+    var msg = Array()
     MongoClient.connect(url, function (err, client) {
-        var msg = Array()
         if (err) throw err;
         const db = client.db("msgData");
         const collection = db.collection('datas');
