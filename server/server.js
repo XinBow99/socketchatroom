@@ -23,8 +23,9 @@ app.get('/historycomment', (req, res) => {
         const collection = db.collection('datas');
         collection.find({}).toArray(function (err, comments) {
             if (comments && comments.length > 0) {
-                console.log(comments)
+                res.end(JSON.stringify(comments));
             }
+            return true;
         })
         client.close(); //關閉連線
     });
